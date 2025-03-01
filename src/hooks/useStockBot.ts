@@ -16,10 +16,12 @@ interface StockBotStates {
   backtest: ActionState;
   trade: ActionState;
   forceExit: ActionState;
+  [key: string]: ActionState; // Add index signature
 }
 
 interface ApiResponse {
   message: string;
+  [key: string]: any; // Allow additional properties
 }
 
 interface ApiMessage {
@@ -59,7 +61,8 @@ export const useStockBot = () => {
       console.log(data);
 
       // Check if data is HTML (ngrok warning) instead of JSON
-      if (typeof data === 'string' && data.includes('<!DOCTYPE html>')) {
+      const dataStr = typeof data === 'string' ? data : JSON.stringify(data);
+      if (dataStr.includes('<!DOCTYPE html>')) {
         throw new Error('Received HTML instead of JSON. Please visit the ngrok URL in browser first to accept the warning.');
       }
 
