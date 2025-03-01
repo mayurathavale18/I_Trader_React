@@ -54,8 +54,10 @@ export const useStockBot = () => {
         {
           params: { stock },
           headers: {
-            'Accept': 'application/json'
-          }
+            'Accept': 'application/json',
+            'ngrok-skip-browser-warning': 'true'
+          },
+          validateStatus: (status) => status < 500 // Accept any status code less than 500
         }
       );
       console.log(data);
@@ -63,7 +65,14 @@ export const useStockBot = () => {
       // Check if data is HTML (ngrok warning) instead of JSON
       const dataStr = typeof data === 'string' ? data : JSON.stringify(data);
       if (dataStr.includes('<!DOCTYPE html>')) {
-        throw new Error('Received HTML instead of JSON. Please visit the ngrok URL in browser first to accept the warning.');
+        console.error('Received HTML from ngrok instead of JSON response');
+        const ngrokUrlMatch = dataStr.match(/visit\s+([^,]+),\s+served/);
+        const ngrokUrl = ngrokUrlMatch ? ngrokUrlMatch[1] : 'the ngrok URL';
+        
+        throw new Error(`Received HTML instead of JSON. This is likely due to ngrok's free tier limitations. 
+        To fix this issue:
+        1. Open ${ngrokUrl} directly in your browser and accept the warning
+        2. Then try your request again`);
       }
 
       setStates((prev) => ({
