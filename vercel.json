@@ -3,7 +3,11 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://2da2-103-144-65-172.ngrok-free.app/:path*"
+      "destination": "https://2da2-103-144-65-172.ngrok-free.app/:path*?ngrok-skip-browser-warning=true"
+    },
+    {
+      "source": "/ngrok-accept",
+      "destination": "https://2da2-103-144-65-172.ngrok-free.app/"
     }
   ],
   "headers": [
@@ -13,14 +17,9 @@
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
-        { "key": "Access-Control-Allow-Headers", "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, ngrok-skip-browser-warning" }
+        { "key": "Access-Control-Allow-Headers", "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, ngrok-skip-browser-warning" },
+        { "key": "ngrok-skip-browser-warning", "value": "true" }
       ]
-    }
-  ],
-  "middleware": [
-    {
-      "source": "/api/(.*)",
-      "middleware": ["middleware"]
     }
   ]
 }
