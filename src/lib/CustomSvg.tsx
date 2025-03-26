@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 
 export interface CustomSVGProps {
   svg: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;

@@ -5,7 +5,6 @@ import { Button } from './components/ui/button';
 import { Card } from './components/ui/Card';
 import { Select } from './components/ui/Select';
 import { SVGS } from '@lib/assets';
-import { CustomSvg } from '@lib/CustomSvg';
 
 // Sample stock data
 const stockOptions = [
