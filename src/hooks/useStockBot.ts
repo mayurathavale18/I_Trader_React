@@ -109,6 +109,6 @@ export const useStockBot = () => {
     trainModel: async (stock: string) => callAPI("train", stock),
     backtestModel: async (stock: string) => callAPI("backtest", stock),
     startTrading: async (stock: string) => callAPI("trade", stock),
-    forceExit: async (stock: string) => callAPI("forceExit", stock),
+    forceExit: async (stock: string) => callAPI("exit", stock),
   };
 };
