@@ -4,6 +4,8 @@ import { useStockBot } from './hooks/useStockBot';
 import { Button } from './components/ui/button';
 import { Card } from './components/ui/Card';
 import { Select } from './components/ui/Select';
+import { SVGS } from '@lib/assets';
+import { CustomSvg } from '@lib/CustomSvg';
 
 // Sample stock data
 const stockOptions = [
@@ -86,9 +88,10 @@ function App() {
               <div className={`h-10 w-10 rounded-lg ${
                 isDarkMode ? "bg-blue-600" : "bg-blue-500"
               } flex items-center justify-center text-white`}>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zm6-4a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zm6-3a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-                </svg>
+                {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M2 11a1 1  0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zm6-4a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zm6-3a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                </svg> */}
+                <img src={SVGS.iTraderIconComp} width={28} height={28} alt="icon"/>
               </div>
               <h1 className="text-2xl md:text-3xl font-bold tracking-tight">I-Trader</h1>
             </div>
@@ -499,10 +502,10 @@ function App() {
           : "bg-gray-900 border-gray-800 text-gray-300"
         } mt-20 py-8 border-t`}>
         <div className="container mx-auto px-4 text-center text-sm">
-          <p className="font-medium">I-Trader Bot &copy; {new Date().getFullYear()} - Final Year BE Project</p>
+          <p className="font-medium">i-Trader Bot &copy; {new Date().getFullYear()} - Final Year BE Project</p>
           <p className={`mt-2 text-xs ${
             isDarkMode ? "text-slate-500" : "text-gray-400"
-          }`}>Algorithmic trading platform powered by AI</p>
+          }`}>i-Trader powered by AI</p>
         </div>
       </footer>
     </div>
