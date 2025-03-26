@@ -46,7 +46,7 @@ export const CustomSvg: React.FC<CustomSVGProps> = ({
     }
   }, [colors, width, height]);
 
-  if (!ZONOSVG) {
+  if (!ITRADERSVG) {
     return null;
   }
   return (
