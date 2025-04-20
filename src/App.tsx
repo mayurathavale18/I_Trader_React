@@ -32,8 +32,7 @@ function App() {
     states.forceExit.loading;
 
   // Get the final portfolio value from backtest response
-  const finalPortfolioValue =
-    states.backtest.response?.data?.final_portfolio_value;
+  const finalPortfolioValue = states.backtest.response?.final_portfolio_value;
 
   // Format portfolio value with commas and 2 decimal places
   const formatCurrency = (value: number | undefined) => {
