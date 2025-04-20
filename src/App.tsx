@@ -71,6 +71,10 @@ function App() {
     }
   }, [isDarkMode]);
 
+  useEffect(() => {
+    console.log("final_porfolio_value : ", finalPortfolioValue);
+  }, [finalPortfolioValue]);
+
   const handleTrain = async () => {
     if (!selectedStock) return;
     await trainModel(selectedStock);
