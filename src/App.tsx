@@ -31,6 +31,21 @@ function App() {
     states.trade.loading ||
     states.forceExit.loading;
 
+  // Get the final portfolio value from backtest response
+  const finalPortfolioValue =
+    states.backtest.response?.data?.final_portfolio_value;
+
+  // Format portfolio value with commas and 2 decimal places
+  const formatCurrency = (value: number | undefined) => {
+    if (!value) return "$0.00";
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(value);
+  };
+
   // Get the most recent message to display
   const getStatusMessage = () => {
     if (states.forceExit.message) return states.forceExit.message;
@@ -232,6 +247,64 @@ function App() {
                     ))}
                   </Select>
                 </div>
+
+                {/* Portfolio Value Card */}
+                {finalPortfolioValue && (
+                  <div
+                    className={`${
+                      isDarkMode
+                        ? "bg-slate-700 border-slate-600"
+                        : "bg-blue-50 border-blue-200"
+                    } border rounded-lg p-4 mb-4`}
+                  >
+                    <h4
+                      className={`text-sm font-medium mb-1 ${
+                        isDarkMode ? "text-blue-300" : "text-blue-800"
+                      }`}
+                    >
+                      Final Portfolio Value
+                    </h4>
+                    <div className="flex items-baseline">
+                      <span
+                        className={`text-2xl font-bold ${
+                          finalPortfolioValue > 10000
+                            ? "text-green-500"
+                            : "text-red-500"
+                        }`}
+                      >
+                        {formatCurrency(finalPortfolioValue)}
+                      </span>
+                      <span
+                        className={`ml-2 text-xs ${
+                          isDarkMode ? "text-slate-400" : "text-slate-500"
+                        }`}
+                      >
+                        after backtest
+                      </span>
+                    </div>
+                    <div
+                      className={`text-xs mt-1 ${
+                        finalPortfolioValue > 10000
+                          ? isDarkMode
+                            ? "text-green-400"
+                            : "text-green-600"
+                          : isDarkMode
+                          ? "text-red-400"
+                          : "text-red-600"
+                      }`}
+                    >
+                      {finalPortfolioValue > 10000
+                        ? `+${(
+                            ((finalPortfolioValue - 10000) / 10000) *
+                            100
+                          ).toFixed(2)}% from initial $10,000`
+                        : `-${(
+                            ((10000 - finalPortfolioValue) / 10000) *
+                            100
+                          ).toFixed(2)}% from initial $10,000`}
+                    </div>
+                  </div>
+                )}
 
                 <div className="space-y-3 pt-4">
                   <Button
