@@ -127,7 +127,7 @@ function App() {
                 />
               </div>
               <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
-                i-Trader
+                iTrader
               </h1>
             </div>
             <div className="flex items-center space-x-4">
