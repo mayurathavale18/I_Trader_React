@@ -10,12 +10,10 @@ import PositionGainsChart from "@components/ui/PositionalGainsChart";
 const stockOptions = [
   { value: "Apple", label: "Apple Inc. (AAPL)" },
   { value: "Microsoft", label: "Microsoft Corporation (MSFT)" },
-  { value: "Amazon", label: "Amazon.com Inc. (AMZN)" },
-  { value: "Alphabet", label: "Alphabet Inc. (GOOGL)" },
-  { value: "Meta", label: "Meta Platforms Inc. (META)" },
+  { value: "Google", label: "Google (GOOGL)" },
+  { value: "Netflix", label: "Netflix (NFLX)" },
   { value: "Tesla", label: "Tesla Inc. (TSLA)" },
-  { value: "NVIDIA", label: "NVIDIA Corporation (NVDA)" },
-  { value: "JPMorgan", label: "JPMorgan Chase & Co. (JPM)" },
+  { value: "Nvidia", label: "NVIDIA (NVDA)" },
 ];
 
 function App() {
